@@ -17,7 +17,49 @@ struct GCMZDropsData {
   uint32_t Flags; // GCMZAPIVer が 2 以上なら存在する
 };
 
-int main(){
+int main(int argc, char *argv[]) {
+
+    char addfile[4096] = "n";
+    int layer = -1;
+    int frameAdvance = 0;
+
+    char lpString[8192];
+
+        int i = 1;
+    while (argv[i] != NULL) {
+        if (argv[i][0] == '-') {
+            switch (argv[i][1]) {
+            case 'f':   //ファイルパス
+                i++;
+                strcpy(addfile, argv[i]);
+                break;
+
+            case 'l':   //レイヤー
+                i++;
+                layer = atoi(argv[i]);
+                break;
+
+            case 'a':   //カーソル移動
+                i++;
+                frameAdvance = atoi(argv[i]);
+                break;
+
+            default:
+                break;
+          
+            }
+        }
+    i++;
+    }
+
+    if(addfile[0] == 'n') {
+        return 1;
+    }
+
+    printf("addfile: %s\n", addfile);
+    
+
+
   HANDLE hMutex = OpenMutex(MUTEX_ALL_ACCESS, FALSE, TEXT("GCMZDropsMutex"));
   if (hMutex == NULL) {
     printf("OpenMutex に失敗しました。\n");
@@ -107,7 +149,10 @@ int main(){
   // files:
   //   投げ込むファイルへのフルパスを配列で渡します。
   //   ファイル名は UTF-8 にする必要がありますが、拡張編集の仕様上 ShiftJIS の範囲内の文字しか扱えません。
-  cds.lpData = u8"{\"layer\":-1,\"frameAdvance\":12,\"files\":[\"C:\\\\test.bmp\"]}";
+
+    sprintf(lpString, "{\"layer\":%d,\"frameAdvance\":%d,\"files\":[\"%s\"]}", layer, frameAdvance, addfile);
+    cds.lpData = lpString;
+
   cds.cbData = strlen(cds.lpData);
 
   // API を呼び出します
