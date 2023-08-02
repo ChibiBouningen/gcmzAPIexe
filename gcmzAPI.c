@@ -69,8 +69,6 @@ int main(int argc, char *argv[]) {
   HANDLE hFMO = OpenFileMapping(FILE_MAP_READ, FALSE, TEXT("GCMZDrops"));
   if (hFMO == NULL) {
     printf("OpenFileMapping に失敗しました。\n");
-    printf("Press any key to exit...\n");
-    getchar(); // キー入力を待機
     return 123;
   }
 
@@ -170,7 +168,5 @@ Unmap:
 CloseFMO:
   CloseHandle(hFMO);
   CloseHandle(hMutex);
-  printf("Press any key to exit...\n");
-    getchar(); // キー入力を待機
   return 0;
 }
