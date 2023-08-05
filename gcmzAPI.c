@@ -4,7 +4,7 @@
 #define UNICODE
 #include <Windows.h>
 
-#define VERSION "1"
+#define VERSION 1
 
 struct GCMZDropsData {
   uint32_t Window;
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
                 break;
 
             case 'v':   //バージョン
-                printf("Version: %s\n", VERSION);
+                printf("Version: %d\n", VERSION);
                 return VERSION;
                 break;
 
