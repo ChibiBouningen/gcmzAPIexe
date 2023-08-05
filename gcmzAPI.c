@@ -4,6 +4,8 @@
 #define UNICODE
 #include <Windows.h>
 
+#define VERSION "1"
+
 struct GCMZDropsData {
   uint32_t Window;
   int32_t Width;
@@ -42,6 +44,11 @@ int main(int argc, char *argv[]) {
             case 'a':   //カーソル移動
                 i++;
                 frameAdvance = atoi(argv[i]);
+                break;
+
+            case 'v':   //バージョン
+                printf("Version: %s\n", VERSION);
+                return VERSION;
                 break;
 
             default:
