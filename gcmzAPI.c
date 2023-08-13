@@ -4,7 +4,7 @@
 #define UNICODE
 #include <Windows.h>
 
-#define VERSION 1
+#define VERSION 2
 
 struct GCMZDropsData {
   uint32_t Window;
