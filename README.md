@@ -2,9 +2,13 @@
 の外部連携APIだけを独立した実行ファイルにすることを目的としたリポジトリです。  
 
 ## 注意事項  
+動作にはVisual C++再頒布可能パッケージのVisualStudio2022 x64用のものが必要です。  
 開発中なので頻繁に破壊的変更を行います。  
 
 ## 使用方法  
+Visual C++再頒布可能パッケージのVisualStudio2022 x64をインストールしてください。  
+https://learn.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170  
+<br>
 ごちゃまぜドロップスv0.3.12以上を導入したAviUtlを起動した状態で、コマンドライン引数を指定し実行します。  
 このとき、ファイルパスのディレクトリの区切りは\\\\\\\\としなければいけません。  
 ```
